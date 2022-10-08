@@ -6,18 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022/9 | 孙策伯符的博客</title>
+  <title>树莓派串口通讯 | 孙策伯符的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="中国药科大学本硕，2023年毕业，擅长python.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="孙策伯符的博客">
-<meta property="og:url" content="http://example.com/archives/2022/09/index.html">
+  <meta name="description" content="UART–通用异步收发传输器，是串口通讯的一种方式，相反的有同步通讯.  设备使用的是树莓派4b(v1.2)  关于UARTUART是一种串行、异步、全双工的通信协议，在嵌入式领域应用的非常广泛。 UART（Universal Asynchronous Receiver&#x2F;Transmitter）是通用异步收发器（异步串行通信口）的英文缩写，它包括了RS232、RS449、RS423、RS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派串口通讯">
+<meta property="og:url" content="http://example.com/2022/10/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/index.html">
 <meta property="og:site_name" content="孙策伯符的博客">
-<meta property="og:description" content="中国药科大学本硕，2023年毕业，擅长python.">
+<meta property="og:description" content="UART–通用异步收发传输器，是串口通讯的一种方式，相反的有同步通讯.  设备使用的是树莓派4b(v1.2)  关于UARTUART是一种串行、异步、全双工的通信协议，在嵌入式领域应用的非常广泛。 UART（Universal Asynchronous Receiver&#x2F;Transmitter）是通用异步收发器（异步串行通信口）的英文缩写，它包括了RS232、RS449、RS423、RS">
 <meta property="og:locale">
+<meta property="og:image" content="http://example.com/images/2560px-UART_timing_diagram.svg.png">
+<meta property="og:image" content="http://example.com/images/v2-e05744b45c367bcd299c74121c367eab_r.jpg">
+<meta property="og:image" content="http://example.com/images/v2-1bfd1542ff48588717ee4e9a6ff6492b_720w.webp">
+<meta property="og:image" content="http://example.com/images/image-20221003153821605.png">
+<meta property="og:image" content="http://example.com/images/image-20221007203718287-1665146240052-1.png">
+<meta property="og:image" content="http://example.com/images/image-20221007203746194.png">
+<meta property="og:image" content="http://example.com/images/image-20221007204350416.png">
+<meta property="og:image" content="http://example.com/images/kSo96fYwdrfQKSvALMKqzc.png">
+<meta property="og:image" content="http://example.com/images/GPIO-Pinout-Diagram-2.png">
+<meta property="og:image" content="http://example.com/images/GPIO.png">
+<meta property="og:image" content="http://example.com/images/kSo96fYwdrfQKSvALMKqzc.png">
+<meta property="article:published_time" content="2022-10-04T12:57:30.000Z">
+<meta property="article:modified_time" content="2022-10-08T15:43:21.073Z">
 <meta property="article:author" content="孙策伯符">
-<meta property="article:tag" content="python,linux,torch,机器学习,统计学">
+<meta property="article:tag" content="树莓派4b">
+<meta property="article:tag" content="c">
+<meta property="article:tag" content="serial">
+<meta property="article:tag" content="uart">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2560px-UART_timing_diagram.svg.png">
   
     <link rel="alternative" href="/atom.xml" title="孙策伯符的博客" type="application/atom+xml">
   
@@ -139,64 +156,411 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-树莓派串口通讯" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/09/28/hexo/" class="archive-article-date">
-  	<time datetime="2022-09-28T15:22:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/09/28/hexo/">hexo</a>
+    <h1 class="article-title" itemprop="name">
+      树莓派串口通讯
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2022/10/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/" class="archive-article-date">
+  	<time datetime="2022-10-04T12:57:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>UART–通用异步收发传输器，是串口通讯的一种方式，相反的有同步通讯. </p>
+<p>设备使用的是树莓派4b(v1.2)</p>
+<hr>
+<h1 id="关于UART"><a href="#关于UART" class="headerlink" title="关于UART"></a>关于UART</h1><p><strong>UART是一种串行、异步、全双工的通信协议</strong>，在嵌入式领域应用的非常广泛。</p>
+<p>UART（Universal Asynchronous Receiver&#x2F;Transmitter）是通用异步收发器（异步串行通信口）的英文缩写，它包括了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/RS232">RS232</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=RS449&action=edit&redlink=1">RS449</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=RS423&action=edit&redlink=1">RS423</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/RS422">RS422</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/RS485">RS485</a>等接口标准规范和总线标准规范，即UART是异步串行通信口的总称。而RS232、RS449、RS423、RS422和RS485等，是对应各种异步串行通信口的接口标准和总线标准，它规定了通信口的电气特性、传输速率、连接特性和接口的机械特性等内容。实际上是属于通信网络中的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>（Physical Layer）的概念，与通信协议没有直接关系。而通信协议，是属于通信网络中的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a>（Data Link Layer）的概念。COM是PC（个人计算机）上，异步串行通信口的简写。由于历史原因，IBM的PC外部接口配置为RS232，成为实际上的PC界默认标准。所以，现在PC机的COM均为RS232。若配有多个异步串行通信口，则分别称为COM1、COM2… 。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="数据帧"><a href="#数据帧" class="headerlink" title="数据帧"></a>数据帧</h3><p>通用异步接受器-发送器(UART)把数据的字节按照比特顺序发送[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/UART#cite_note-Osborne80-1">1]</a>。另一端的UART把比特组装为字节。每个UART包含一个<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%A7%BB%E4%BD%8D%E5%AF%84%E5%AD%98%E5%99%A8">移位寄存器</a>。通过一根线或其他介质的串行通信比通过多根线的并行通信具有更低成本。</p>
+<p><img src="/images/2560px-UART_timing_diagram.svg.png" alt="UART timing diagram.svg"></p>
+<h3 id="协议-amp-硬件："><a href="#协议-amp-硬件：" class="headerlink" title="协议 &amp; 硬件："></a>协议 &amp; 硬件：</h3><p>TTL、RS232、RS449、RS423、RS422和RS485，他们的不同是如何表示逻辑0和1的方式不同。</p>
+<p>如TTL电平：全双工（逻辑1: 2.4V–5V 逻辑0: 0V–0.5V）</p>
+<p><img src="/images/v2-e05744b45c367bcd299c74121c367eab_r.jpg" alt="img"></p>
+<p>9口串口：这种接口的协议只有两种：RS-232和RS-485。不会是TTL电平的(除非特殊应用)。</p>
+<p><img src="/images/v2-1bfd1542ff48588717ee4e9a6ff6492b_720w.webp" alt="img"></p>
+<h2 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h2><p>波特率（Baud）：在电子通信领域，波特（Baud）即调制速率，指的是有效数据讯号调制载波的速率，即单位时间内载波调制状态变化的次数。 对于UART而言，由于码元（信号单元）是电平高低即一个bit，所以波特率其实就是比特率.</p>
+<h1 id="树莓派4b的串口"><a href="#树莓派4b的串口" class="headerlink" title="树莓派4b的串口"></a>树莓派4b的串口</h1><p>树莓派的UART有2中UART：PL011和mini-UART，两者均使用的3.3v作为高电平，使用的协议是TTL。对于树莓派4和400，有4个额外的PL011. 所有的UART都是默认关闭的，且对于有蓝牙的树莓派4b默认硬件的串口是性能差的mini-UART的映射，PL011是映射到了蓝牙上了。</p>
+<h2 id="PL011-amp-mini-UART"><a href="#PL011-amp-mini-UART" class="headerlink" title="PL011 &amp; mini-UART"></a>PL011 &amp; mini-UART</h2><p>PL011是一个arm-based的UART，而mini uart是使用VPU核心频率的UART，mini urat默认是作为linux console的ouput。因此mini uart受限与VPU的核心频率，相比于PL011稳定性和灵活性更差，而且吞吐量更低. </p>
+<blockquote>
+<p>There are some differences between PL011 UARTs and mini-UART.</p>
+<p>The mini-UART has smaller FIFOs. Combined with the lack of flow control, this makes it more prone to losing characters at higher baudrates. It is also generally less capable than a PL011, mainly due to its baud rate link to the VPU clock speed.</p>
+<p>The particular deficiencies of the mini UART compared to a PL011 are :</p>
+<ul>
+<li>No break detection</li>
+<li>No framing errors detection</li>
+<li>No parity bit</li>
+<li>No receive timeout interrupt</li>
+<li>No DCD, DSR, DTR or RI signals</li>
+</ul>
+<p>Further documentation on the mini UART can be found in the <a target="_blank" rel="noopener" href="https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf">SoC peripherals document</a>.</p>
+</blockquote>
+<h3 id="Linux-devices-on-Raspberry-Pi-OS"><a href="#Linux-devices-on-Raspberry-Pi-OS" class="headerlink" title="Linux devices on Raspberry Pi OS:"></a>Linux devices on Raspberry Pi OS:</h3><table>
+<thead>
+<tr>
+<th align="left">Linux device</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>/dev/ttyS0</code></td>
+<td align="left">mini UART</td>
+</tr>
+<tr>
+<td align="left"><code>/dev/ttyAMA0</code></td>
+<td align="left">first PL011 (UART0)</td>
+</tr>
+<tr>
+<td align="left"><code>/dev/serial0</code></td>
+<td align="left">primary UART</td>
+</tr>
+<tr>
+<td align="left"><code>/dev/serial1</code></td>
+<td align="left">secondary UART</td>
+</tr>
+</tbody></table>
+<p>mini UART默认是不开启的</p>
+<p>使用 <code>ls -l /dev/serial*</code> 查看映射情况</p>
+<h3 id="primary-UART"><a href="#primary-UART" class="headerlink" title="primary UART"></a>primary UART</h3><blockquote>
+<p>On the Raspberry Pi, one UART is selected to be present on GPIO 14 (transmit) and 15 (receive) - this is the primary UART. By default, this will also be the UART on which a Linux console may be present. Note that GPIO 14 is pin 8 on the GPIO header, while GPIO 15 is pin 10.</p>
+</blockquote>
+<p><code>/dev/serial0</code> 是和硬件的 GPIO14-15 绑定, 默认是用来输出linux的命令行信息的。</p>
+<h3 id="secondary-UART"><a href="#secondary-UART" class="headerlink" title="secondary UART"></a>secondary UART</h3><blockquote>
+<p>The secondary UART is not normally present on the GPIO connector. By default, the secondary UART is connected to the Bluetooth side of the combined wireless LAN&#x2F;Bluetooth controller, on models which contain this controller.</p>
+</blockquote>
+<p><code>/dev/serial1</code> 不和GPIO链接，而是和LAN&#x2F;蓝牙.</p>
+<h2 id="开启serial0-的-mini-UART"><a href="#开启serial0-的-mini-UART" class="headerlink" title="开启serial0 的 mini UART"></a>开启serial0 的 mini UART</h2><p>（下述的并重启是重启后才生效，可以配置完了再一起重启）</p>
+<h3 id="开启primary-uart（-dev-serial0）"><a href="#开启primary-uart（-dev-serial0）" class="headerlink" title="开启primary uart（/dev/serial0）,"></a>开启primary uart（<code>/dev/serial0</code>）,</h3><p> 两种方式: </p>
+<p>(1) 修改boot配置文件, 并重启</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /boot/config.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文末添加:</span></span><br><span class="line">enable_uart=1 </span><br></pre></td></tr></table></figure>
+
+<p>(2) 通过raspi配置工具修改boot配置文件，并重启：</p>
+<p>a. <code>sudo raspi-config</code></p>
+<p>b. 选择 <code>3 Interface Options</code></p>
+<p>c. 选择 <code>P6 Serial Port</code></p>
+<p>d. 依次回答: 是否开启 串口console 和 enable serial；前者开启后enable serial 必然开启, 本文只是使用serial通讯而非登录shell, 因此选择 No 和 Yes</p>
+<p>(ps: way (2) 本质上就是修改boot配置文件)</p>
+<h3 id="固定VPU的core-frequency"><a href="#固定VPU的core-frequency" class="headerlink" title="固定VPU的core frequency"></a>固定VPU的core frequency</h3><p>修改boot配置文件，并重启</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /boot/config.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文末添加:</span></span><br><span class="line">core_freq=250 # 250 means 250MHz #  或者 force_turbo=1 </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="开启-serial0-的-PL011"><a href="#开启-serial0-的-PL011" class="headerlink" title="开启 serial0 的 PL011"></a>开启 serial0 的 PL011</h2><p>修改boot配置文件关闭蓝牙或开启蓝牙的mini-uart，并重启</p>
+<h3 id="关闭蓝牙"><a href="#关闭蓝牙" class="headerlink" title="关闭蓝牙"></a>关闭蓝牙</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl disable hciuart # 防止蓝牙的系统服务初始化蓝牙模块</span><br><span class="line">sudo vim /boot/config.txt # 关闭 boot</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文末添加:</span></span><br><span class="line">dtoverlay=disable-bt</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改蓝牙的串口类型（PL011-gt-mini-UART）"><a href="#修改蓝牙的串口类型（PL011-gt-mini-UART）" class="headerlink" title="修改蓝牙的串口类型（PL011 -&gt; mini-UART）"></a>修改蓝牙的串口类型（PL011 -&gt; mini-UART）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /boot/config.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文末添加</span></span><br><span class="line">dtoverlay=miniuart-bt</span><br><span class="line">core_freq=250 #  或者 force_turbo=1 </span><br></pre></td></tr></table></figure>
+
+<h2 id="开启additional-PL011"><a href="#开启additional-PL011" class="headerlink" title="开启additional PL011"></a>开启additional PL011</h2><p>树莓派4有额外的4个PL011</p>
+<p>The Raspberry Pi 4B and 400 have an additional four PL011s, which are disabled by default:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">UART0</td>
+<td align="left">PL011</td>
+</tr>
+<tr>
+<td align="left">UART1</td>
+<td align="left">mini UART</td>
+</tr>
+<tr>
+<td align="left">UART2</td>
+<td align="left">PL011</td>
+</tr>
+<tr>
+<td align="left">UART3</td>
+<td align="left">PL011</td>
+</tr>
+<tr>
+<td align="left">UART4</td>
+<td align="left">PL011</td>
+</tr>
+<tr>
+<td align="left">UART5</td>
+<td align="left">PL011</td>
+</tr>
+</tbody></table>
+<p>可以使用<code>dtoverlay -h uart&lt;数字&gt;</code> 查看对应的串口信息:</p>
+<p><img src="/images/image-20221003153821605.png" alt="image-20221003153821605"></p>
+<p>Usage部分注明了 boot 配置的使用方式:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启 uart2</span></span><br><span class="line">sudo vim /boot/config.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在文末添加:</span></span><br><span class="line">dtoverlay=uart2</span><br></pre></td></tr></table></figure>
+
+<h2 id="调试相关的Linux命令"><a href="#调试相关的Linux命令" class="headerlink" title="调试相关的Linux命令"></a>调试相关的Linux命令</h2><h3 id="使用-stty-echo-cat"><a href="#使用-stty-echo-cat" class="headerlink" title="使用 stty + echo + cat"></a>使用 stty + echo + cat</h3><p>该方法是在配置后stty的设备和波特率后一头写(echo)一头查看(cat)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">device A: 测试 A-RX &amp; B-TX</span></span><br><span class="line">stty -F /dev/ttyAMA0 115200 # 9600 需要保持一致 stty 115200 -F /dev/ttyAMA0 or stty 115200 &lt; /dev/ttyAMA0</span><br><span class="line">cat -A &lt; /dev/ttyAMA0 # -A = -vET 显示no-print(除了换行和tab) &amp; end$ &amp; ^T (tab)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">device B:</span></span><br><span class="line">stty -F /dev/ttyAMA0 115200</span><br><span class="line">echo &quot;hi, i am device B.&quot; &gt; /dev/ttyAMA0</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用screen"><a href="#使用screen" class="headerlink" title="使用screen"></a>使用screen</h3><p>该方法是直接通过screen将当前console连接到uart, 相当于互换“屏幕”</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install screen</span><br><span class="line">screen /dev/ttyAMA0 115200 # ctrl+a then d: detach session or ctrl+a then kill: kill session;</span><br><span class="line">screen -r # return the session</span><br></pre></td></tr></table></figure>
+
+<h2 id="wiringSerial"><a href="#wiringSerial" class="headerlink" title="wiringSerial"></a>wiringSerial</h2><p>树莓派4b原生的c语言串口库: <code>wiringSerial</code> 当然也可以选择python的pyserial.</p>
+<p>主要的API(<code>include wiringSerial.h</code>)介绍:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 开启串口</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span>   <span class="title function_">serialOpen</span>      <span class="params">(<span class="type">const</span> <span class="type">char</span> *device, <span class="type">const</span> <span class="type">int</span> baud)</span> ;</span><br><span class="line"><span class="comment">// 关闭串口</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">void</span>  <span class="title function_">serialClose</span>     <span class="params">(<span class="type">const</span> <span class="type">int</span> fd)</span> ;</span><br><span class="line"><span class="comment">// Flush RX和TX</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">void</span>  <span class="title function_">serialFlush</span>     <span class="params">(<span class="type">const</span> <span class="type">int</span> fd)</span> ;</span><br><span class="line"><span class="comment">// 发送一个char</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">void</span>  <span class="title function_">serialPutchar</span>   <span class="params">(<span class="type">const</span> <span class="type">int</span> fd, <span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> c)</span> ;</span><br><span class="line"><span class="comment">// 发送一个字符串（本质是char数组，以0x00为终点）</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">void</span>  <span class="title function_">serialPuts</span>      <span class="params">(<span class="type">const</span> <span class="type">int</span> fd, <span class="type">const</span> <span class="type">char</span> *s)</span> ;</span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">void</span>  <span class="title function_">serialPrintf</span>    <span class="params">(<span class="type">const</span> <span class="type">int</span> fd, <span class="type">const</span> <span class="type">char</span> *message, ...)</span> ;</span><br><span class="line"><span class="comment">// Return the number of bytes of data avalable to be read in the serial port</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span>   <span class="title function_">serialDataAvail</span> <span class="params">(<span class="type">const</span> <span class="type">int</span> fd)</span> ;</span><br><span class="line"><span class="comment">// Get a single character from the serial device.</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span>   <span class="title function_">serialGetchar</span>   <span class="params">(<span class="type">const</span> <span class="type">int</span> fd)</span> ;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>现在要将信息进行串口传输，为了节省example的制作成本，使用同一个树莓派4b的两个串口通讯，而不是使用另外的串口设备进行接受、发送。</p>
+<h2 id="使用的设备"><a href="#使用的设备" class="headerlink" title="使用的设备"></a>使用的设备</h2><p>raspi 4b，2根（母对母）杜邦线</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="开启两个串口"><a href="#开启两个串口" class="headerlink" title="开启两个串口"></a>开启两个串口</h3><p>先查看设备情况:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /dev/serial*</span><br></pre></td></tr></table></figure>
+
+<p>如果你是新装的系统（仅开启了蓝牙串口serial1且映射到了第0个PL011）：</p>
+<p><img src="/images/image-20221007203718287-1665146240052-1.png" alt="image-20221007203718287"></p>
+<p>或者也可能是（相比上一个还开启了mini-uart并映射到了serial0上）:</p>
+<p><img src="/images/image-20221007203746194.png" alt="image-20221007203746194"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /boot/config.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加或修改</span></span><br><span class="line">enable_uart=1 # 开启串口通讯</span><br><span class="line">dtoverlay=miniuart-bt # 将蓝牙映射到miniuart-bt</span><br><span class="line">force_turbo=1 # 固定vpu频率可以使用 core_freq=250 代替 或者 不添加也不影响下面的串口演示</span><br><span class="line">dtoverlay=uart5 # 开启第二个串口并设置GPIO的位置(uart5 比较好数)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">uart0开启还需要</span></span><br><span class="line">sudo raspi-config # 之后 关闭 shell login; 开启 serial</span><br><span class="line">sudo systemctl mask serial-getty@ttyAMA0.service # 有时候会遇到 /dev/ttyAMA0 是 tty组的情况</span><br><span class="line">sudo vim /boot/cmdline.txt # 删除console=serial0,115200 有时候会遇到 /dev/ttyAMA0 是 tty组的情况</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启</span></span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<p>检查设备情况:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -l /dev/serial* # 查看serial0 和 serial1 的映射是否发生变化, serial0是GPIO14，15要和第一个PL011-ttyAMA0对应</span><br><span class="line">ls -l /dev/ttyAMA* # 查看所有的PL011设备</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/image-20221007204350416.png" alt="image-20221007204350416"></p>
+<h3 id="连接串口"><a href="#连接串口" class="headerlink" title="连接串口"></a>连接串口</h3><p><img src="/images/kSo96fYwdrfQKSvALMKqzc.png" alt="img"></p>
+<p>用杜邦线将UART5和UART0连接： 32 （TXD5）连 10（RXD0）； 33（RXD5） 连 8 （TXD0）（40是靠近网口的一头）</p>
+<p>测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stty -F /dev/ttyAMA0 115200</span><br><span class="line">stty -F /dev/ttyAMA1 115200</span><br><span class="line">cat -v &lt; /dev/ttyAMA0 &amp; </span><br><span class="line">echo &quot;hi&quot; &gt; /dev/ttyAMA1 # 如果打印出 hi 和回车说明正常</span><br><span class="line">fg # Ctrl + c 关闭 cat程序</span><br></pre></td></tr></table></figure>
+
+<h3 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h3><h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><p>Server:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim server.py</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/env/python3</span><br><span class="line"></span><br><span class="line">import serial</span><br><span class="line">import argparse</span><br><span class="line">import time</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">def loop(ser:serial.Serial, *args, **kwargs):</span><br><span class="line">    info_fn = kwargs.get(&quot;info&quot;)</span><br><span class="line">    if info_fn is None:</span><br><span class="line">        info_str = time.ctime() + &quot; info %1.4f.&quot; % random.random()</span><br><span class="line">        info = info_str.encode(&quot;utf-8&quot;)</span><br><span class="line">    elif hasattr(info_fn, &quot;__call__&quot;):</span><br><span class="line">        info = info_fn()</span><br><span class="line">    else:</span><br><span class="line">        info = info_fn</span><br><span class="line">    if ser.writable():</span><br><span class="line">        ret = ser.write(info)</span><br><span class="line">        print(&quot;write done (%d).&quot; % ret)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument(&#x27;--device&#x27;, &#x27;-d&#x27;, type=str, default=&quot;/dev/ttyAMA0&quot;) # port</span><br><span class="line">    parser.add_argument(&#x27;--rate&#x27;, &#x27;-r&#x27;, type=int, default=115200) # baudrate</span><br><span class="line">    parser.add_argument(&#x27;--frequency&#x27;, &#x27;-f&#x27;, type=int, default=1.) # refresh Hz</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">    sleep_time = 1 / args.frequency</span><br><span class="line">    ser = serial.Serial(args.device, args.rate)</span><br><span class="line"></span><br><span class="line">    print(&quot;---- Serial Server Start ----&quot;)</span><br><span class="line">    print(f&quot;port: &#123;args.device&#125;, baudrate: &#123;args.rate&#125; @ &#123;args.frequency&#125;Hz&quot;)</span><br><span class="line">    while True and ser.isOpen():</span><br><span class="line">        loop(ser)</span><br><span class="line">        time.sleep(sleep_time)</span><br><span class="line">    print(&quot;Error: can&#x27;t open serial.&quot;)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p>Client:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim client.py</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/env/python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> serial</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">loop</span>(<span class="params">ser:serial.Serial, *args, **kwargs</span>):</span><br><span class="line">    wait_more = kwargs.get(<span class="string">&quot;waitime&quot;</span>, <span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ser.inWaiting() &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ser.inWaiting() &lt; <span class="number">37</span>:</span><br><span class="line">        time.sleep(wait_more)</span><br><span class="line">        </span><br><span class="line">    <span class="built_in">print</span>(ser.read_all().decode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--device&#x27;</span>, <span class="string">&#x27;-d&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, default=<span class="string">&quot;/dev/ttyAMA1&quot;</span>) <span class="comment"># port</span></span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--rate&#x27;</span>, <span class="string">&#x27;-r&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, default=<span class="number">115200</span>) <span class="comment"># baudrate</span></span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--frequency&#x27;</span>, <span class="string">&#x27;-f&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, default=<span class="number">1.</span>) <span class="comment"># refresh Hz</span></span><br><span class="line">    args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">    sleep_time = <span class="number">1</span> / args.frequency - <span class="number">0.01</span></span><br><span class="line">    ser = serial.Serial(args.device, args.rate)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;---- Serial Client Start ----&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;port: <span class="subst">&#123;args.device&#125;</span>, baudrate: <span class="subst">&#123;args.rate&#125;</span> @ <span class="subst">&#123;args.frequency&#125;</span>Hz&quot;</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span> <span class="keyword">and</span> ser.isOpen():</span><br><span class="line">        loop(ser)</span><br><span class="line">        time.sleep(sleep_time)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Error: can&#x27;t open serial.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python3 client.py  # 在一个terminal</span><br><span class="line">python3 server.py # 在另一个terminal</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="c"><a href="#c" class="headerlink" title="c"></a>c</h4><p>Server:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim server.c</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;wiringPi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;wiringSerial.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span>&#123;</span><br><span class="line">    <span class="type">char</span> device[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> baudrate;</span><br><span class="line">    <span class="type">uint8_t</span> info[<span class="number">5</span>]; <span class="comment">// [:2] index, [2:] data </span></span><br><span class="line">    <span class="type">uint16_t</span> index;</span><br><span class="line">    <span class="type">uint16_t</span> data;</span><br><span class="line">    <span class="type">int</span> port;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">strcpy</span>(device, <span class="string">&quot;/dev/ttyAMA0&quot;</span>);</span><br><span class="line">    baudrate = <span class="number">115200</span>;</span><br><span class="line">    <span class="keyword">if</span> (argc &gt; <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// device = argv[1];</span></span><br><span class="line">        <span class="built_in">strcpy</span>(device, argv[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span> (argc &gt; <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            baudrate = atoi(argv[<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    srand((<span class="type">unsigned</span>) time(<span class="literal">NULL</span>)); <span class="comment">// set seed</span></span><br><span class="line">    index = <span class="number">0</span>;</span><br><span class="line">    port = serialOpen(device, baudrate);</span><br><span class="line">    info[<span class="number">4</span>] = <span class="number">0x00</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;port: %s, baudrate: %d @ %d.\n&quot;</span>, device, baudrate, port);</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Loop</span></span><br><span class="line">        data = (<span class="type">uint16_t</span>) (rand() &amp; <span class="number">0xFFFF</span>);</span><br><span class="line"></span><br><span class="line">        info[<span class="number">0</span>] = (<span class="type">uint8_t</span>) (index &amp; <span class="number">0xFF00</span>);</span><br><span class="line">        info[<span class="number">1</span>] = (<span class="type">uint8_t</span>) (index &amp; <span class="number">0x00FF</span>);</span><br><span class="line">        info[<span class="number">2</span>] = (<span class="type">uint8_t</span>) (data &amp; <span class="number">0xFF00</span>);</span><br><span class="line">        info[<span class="number">3</span>] = (<span class="type">uint8_t</span>) (data &amp; <span class="number">0x00FF</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * </span></span><br><span class="line"><span class="comment">         *  don&#x27;t use serialPuts: info start with 0x00 -&gt; strlen(s) = 0</span></span><br><span class="line"><span class="comment">         serialPuts(port, (char*) info);</span></span><br><span class="line"><span class="comment">         void serialPuts (const int fd, const char *s)</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">        write (fd, s, strlen (s)) ; // unistd.h</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">         </span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        write(port, info, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, info[<span class="number">1</span>]);</span><br><span class="line">        </span><br><span class="line">        index++;</span><br><span class="line"></span><br><span class="line">        delay(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Client:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim client.c</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;wiringPi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;wiringSerial.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span>&#123;</span><br><span class="line">    <span class="type">char</span> device[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> baudrate;</span><br><span class="line">    <span class="type">uint16_t</span> index;</span><br><span class="line">    <span class="type">uint16_t</span> data;</span><br><span class="line">    <span class="type">int</span> port;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (argc &gt; <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">strcpy</span>(device, argv[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span> (argc &gt; <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            baudrate = atoi(argv[<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            baudrate = <span class="number">115200</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">strcpy</span>(device, <span class="string">&quot;/dev/ttyAMA1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// strcpy(device, (argc &gt; 1)? argv[1]: &quot;/dev/ttyAMA1&quot;);</span></span><br><span class="line">    <span class="comment">// baudrate = (argc &gt; 2)? atoi(argv[2]):115200;</span></span><br><span class="line"></span><br><span class="line">    port = serialOpen(device, baudrate);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;port: %s, baudrate: %d.\n&quot;</span>, device, baudrate);</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Loop</span></span><br><span class="line">        index = <span class="number">0x0000</span>;</span><br><span class="line">        data = <span class="number">0x0000</span>;</span><br><span class="line">        <span class="keyword">while</span> (serialDataAvail(port) &lt; <span class="number">4</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            delay(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        index |= ((<span class="type">uint16_t</span>) serialGetchar(port) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">        index |= (<span class="type">uint16_t</span>) serialGetchar(port);</span><br><span class="line">        data |= ((<span class="type">uint16_t</span>) serialGetchar(port) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">        data |= (<span class="type">uint16_t</span>) serialGetchar(port);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d:%d\n&quot;</span>, index, data);</span><br><span class="line"></span><br><span class="line">        delay(<span class="number">900</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译</span></span><br><span class="line">gcc -o server.out server.c -lwiringPi</span><br><span class="line">gcc -o client.out client.c -lwiringPi</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行</span></span><br><span class="line">./client.out</span><br><span class="line">./server.out</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<hr>
+<h1 id="树莓派4B-GPIO图"><a href="#树莓派4B-GPIO图" class="headerlink" title="树莓派4B-GPIO图"></a>树莓派4B-GPIO图</h1><p><img src="/images/GPIO-Pinout-Diagram-2.png" alt="GPIO pins"></p>
+<center> GPIO PIN</center>
+
+<p><img src="/images/GPIO.png" alt="GPIO layout"></p>
+<center> GPIO Layout</center>
+
+<p><img src="/images/kSo96fYwdrfQKSvALMKqzc.png" alt="img"></p>
+<hr>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/150504364">UART串口协议详解 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/89240672">串口、COM口、UART口, TTL、RS-232、RS-485区别详解 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/UART">UART - 维基百科，自由的百科全书 (wikipedia.org)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B8%B2%E8%A1%8C%E7%AB%AF%E5%8F%A3">串行接口 - 维基百科，自由的百科全书 (wikipedia.org)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts">Raspberry Pi Documentation - Configuration</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.electronicwings.com/raspberry-pi/raspberry-pi-uart-communication-using-python-and-c">Raspberry Pi UART Communication using Python and C | Raspberry Pi (electronicwings.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.gnu.org/software/screen/manual/screen.html#Window-Types">Screen User’s Manual (gnu.org)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/WiringPi/WiringPi">WiringPi&#x2F;WiringPi: Gordon’s Arduino wiring-like WiringPi Library for the Raspberry Pi (Unofficial Mirror for WiringPi bindings) (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.raspberrypi.com/documentation/computers/os.html#gpio-and-the-40-pin-header">Raspberry Pi Documentation - Raspberry Pi OS</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.tomshardware.com/reviews/raspberry-pi-gpio-pinout,6122.html">Raspberry Pi GPIO Pinout: What Each Pin Does on Pi 4, Earlier Models | Tom’s Hardware (tomshardware.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://raspberrypi.stackexchange.com/questions/48211/set-permission-for-dev-ttyama0-on-boot">raspbian - Set permission for &#x2F;dev&#x2F;ttyAMA0 on boot - Raspberry Pi Stack Exchange</a></p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>我真是谢谢你啊<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">树莓派4b</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">usageman</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">c</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">serial</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">uart</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2022/09/28/hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EUART"><span class="toc-number">1.</span> <span class="toc-text">关于UART</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.1.1.</span> <span class="toc-text">数据帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE-amp-%E7%A1%AC%E4%BB%B6%EF%BC%9A"><span class="toc-number">1.1.2.</span> <span class="toc-text">协议 &amp; 硬件：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.2.</span> <span class="toc-text">一些术语</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BE4b%E7%9A%84%E4%B8%B2%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">树莓派4b的串口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PL011-amp-mini-UART"><span class="toc-number">2.1.</span> <span class="toc-text">PL011 &amp; mini-UART</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-devices-on-Raspberry-Pi-OS"><span class="toc-number">2.1.1.</span> <span class="toc-text">Linux devices on Raspberry Pi OS:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#primary-UART"><span class="toc-number">2.1.2.</span> <span class="toc-text">primary UART</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#secondary-UART"><span class="toc-number">2.1.3.</span> <span class="toc-text">secondary UART</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AFserial0-%E7%9A%84-mini-UART"><span class="toc-number">2.2.</span> <span class="toc-text">开启serial0 的 mini UART</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AFprimary-uart%EF%BC%88-dev-serial0%EF%BC%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">开启primary uart（&#x2F;dev&#x2F;serial0）,</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9AVPU%E7%9A%84core-frequency"><span class="toc-number">2.2.2.</span> <span class="toc-text">固定VPU的core frequency</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AF-serial0-%E7%9A%84-PL011"><span class="toc-number">2.3.</span> <span class="toc-text">开启 serial0 的 PL011</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E8%93%9D%E7%89%99"><span class="toc-number">2.3.1.</span> <span class="toc-text">关闭蓝牙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%93%9D%E7%89%99%E7%9A%84%E4%B8%B2%E5%8F%A3%E7%B1%BB%E5%9E%8B%EF%BC%88PL011-gt-mini-UART%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">修改蓝牙的串口类型（PL011 -&gt; mini-UART）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AFadditional-PL011"><span class="toc-number">2.4.</span> <span class="toc-text">开启additional PL011</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3%E7%9A%84Linux%E5%91%BD%E4%BB%A4"><span class="toc-number">2.5.</span> <span class="toc-text">调试相关的Linux命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-stty-echo-cat"><span class="toc-number">2.5.1.</span> <span class="toc-text">使用 stty + echo + cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8screen"><span class="toc-number">2.5.2.</span> <span class="toc-text">使用screen</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wiringSerial"><span class="toc-number">2.6.</span> <span class="toc-text">wiringSerial</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Example"><span class="toc-number">3.</span> <span class="toc-text">Example</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">3.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AE%BE%E5%A4%87"><span class="toc-number">3.2.</span> <span class="toc-text">使用的设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.3.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E4%B8%A4%E4%B8%AA%E4%B8%B2%E5%8F%A3"><span class="toc-number">3.3.1.</span> <span class="toc-text">开启两个串口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E4%B8%B2%E5%8F%A3"><span class="toc-number">3.3.2.</span> <span class="toc-text">连接串口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B"><span class="toc-number">3.3.3.</span> <span class="toc-text">编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python"><span class="toc-number">3.3.3.1.</span> <span class="toc-text">python</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c"><span class="toc-number">3.3.3.2.</span> <span class="toc-text">c</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BE4B-GPIO%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">树莓派4B-GPIO图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -219,8 +583,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
